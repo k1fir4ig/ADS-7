@@ -24,15 +24,15 @@ int Train::getLength() {
 
   countOp = 0;
   first->light = true;
-  
+
   Car *passenger = first;
   int steps = 0;
-  
+
   for (;;) {
     passenger = passenger->next;
     countOp++;
     steps++;
-    
+
     if (passenger->light) {
       passenger->light = false;
       Car *checker = passenger;
@@ -40,11 +40,11 @@ int Train::getLength() {
         checker = checker->prev;
         countOp++;
       }
-      
+
       if (!checker->light) {
         return steps;
       }
-      
+
       passenger = checker;
       for (int i = 0; i < steps; ++i) {
         passenger = passenger->next;
